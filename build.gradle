@@ -1,15 +1,21 @@
 defaultTasks 'build'
 
-apply plugin: 'java'
-apply plugin: 'idea'
+subprojects {
+	apply plugin: 'java'
+	apply plugin: 'idea'
 
-sourceCompatibility = 1.7
-version = '1.0'
+	sourceCompatibility = 1.7
+	version = '1.0'
 
-repositories {
-	mavenCentral()
-}
+	repositories {
+		mavenCentral()
+	}
 
-dependencies {
-	testCompile group: 'junit', name: 'junit', version: '4.+'
+	dependencies {
+		testCompile 'junit:junit:4.+'
+	}
+
+	jar {
+		manifest.attributes provider: 'gradle'
+	}
 }
