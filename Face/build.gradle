@@ -1,1 +1,10 @@
 apply plugin: 'war'
+
+dependencies{
+    compile project (':Sensory')
+}
+
+task copyClasses(type:Sync){
+    from 'build/libs/classes'
+    into 'WEB-INF/classes'
+}
