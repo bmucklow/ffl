@@ -1,12 +1,30 @@
 apply plugin: 'war'
 
+defaultTasks 'build', 'war'
+
 dependencies{
     compile project (':Sensory')
 }
 
-task copyClasses(type:Sync){
-    from 'build/libs/classes/main'
-    into 'WEB-INF/classes'
+def webApp = 'war'
+
+clean {
+	ant {
+		delete(dir:webApp + '/WEB-INF/lib')
+		delete(dir:webApp + '/WEB-INF/classes/com')
+		delete(dir:webApp + '/WEB-INF/deploy')
+	}
+}
+
+task copyClasses(type: Sync){
+    from 'build/classes/main'
+    into 'war/WEB-INF/classes'
+}
+
+war {
+	from (webApp){
+		outputs.upToDateWhen{false}
+	}
 }
 
 war.dependsOn(copyClasses)
