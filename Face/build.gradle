@@ -5,6 +5,8 @@ dependencies{
 }
 
 task copyClasses(type:Sync){
-    from 'build/libs/classes'
+    from 'build/libs/classes/main'
     into 'WEB-INF/classes'
 }
+
+war.dependsOn(copyClasses)
