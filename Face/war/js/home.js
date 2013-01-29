@@ -1,4 +1,4 @@
-define(function() {
+define(["login"], function() {
 
 	function initialize(){
 		alert("Home js initialized.");
@@ -7,4 +7,4 @@ define(function() {
 	return {
 		initialize:initialize
 	}
-})
+});
